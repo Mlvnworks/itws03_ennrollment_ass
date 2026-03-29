@@ -74,18 +74,6 @@ CREATE TABLE `enrollment` (
   UNIQUE KEY `uq_enrollment_enrollmentNo` (`enrollmentNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `settings` (
-  `settingsID` int(11) NOT NULL AUTO_INCREMENT,
-  `schoolName` varchar(150) NOT NULL,
-  `schoolEmail` varchar(120) NOT NULL,
-  `schoolPhone` varchar(30) NOT NULL,
-  `schoolAddress` varchar(255) NOT NULL,
-  `dateCreated` timestamp NOT NULL DEFAULT current_timestamp(),
-  `dateUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `dateDeleted` date DEFAULT NULL,
-  PRIMARY KEY (`settingsID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 INSERT INTO `users` (`userID`, `fullName`, `username`, `email`, `password`) VALUES
 (1, 'System Admin', 'admin', 'admin@schoolportal.com', '$2y$12$wDBls6U2zkpglGkxYRoyHOIO3deiix.DZjq/qIY.bmu5QmtpnDBtq'),
 (2, 'Registrar Clerk', 'registrar', 'registrar@schoolportal.com', '$2y$12$wDBls6U2zkpglGkxYRoyHOIO3deiix.DZjq/qIY.bmu5QmtpnDBtq');
@@ -109,8 +97,5 @@ INSERT INTO `students` (`studentID`, `studentNo`, `fullName`, `email`, `yearLeve
 INSERT INTO `enrollment` (`enrollmentID`, `enrollmentNo`, `studentName`, `courseName`, `campusName`, `status`) VALUES
 (1, 'ENR-2026-0001', 'John Dela Cruz', 'Bachelor of Science in Information Technology', 'Main Campus', 'Pending'),
 (2, 'ENR-2026-0002', 'Anna Reyes', 'Bachelor of Science in Computer Science', 'North Campus', 'Enrolled');
-
-INSERT INTO `settings` (`settingsID`, `schoolName`, `schoolEmail`, `schoolPhone`, `schoolAddress`) VALUES
-(1, 'International School Demo', 'info@schoolportal.com', '+63 2 8123 4567', '100 Education Ave, Manila, Philippines');
 
 COMMIT;

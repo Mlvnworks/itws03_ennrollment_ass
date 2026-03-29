@@ -34,7 +34,7 @@ body{background:#f5f6fa;}
 <nav class="navbar navbar-expand-lg topbar px-3">
 <div class="container-fluid">
 <h5 class="mb-0">Role Management</h5>
-<div class="ms-auto"><span class="me-3"><i class="bi bi-person-circle"></i> Admin</span></div>
+<div class="ms-auto"><span class="me-3"><i class="bi bi-person-circle"></i> <?php echo htmlspecialchars($_SESSION['fullName'] ?? 'User'); ?></span></div>
 </div>
 </nav>
 

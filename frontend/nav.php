@@ -5,8 +5,7 @@
 </h5>
 
 <a href="dashboard.php"><i class="bi bi-speedometer2"></i> Dashboard</a>
-<a href="settings.php"><i class="bi bi-gear"></i> Settings</a>
-
+<div class="px-3 py-2"><i class="bi bi-gear"></i> Settings</div>
 <div class="submenu">
 <a href="user.php"><i class="bi bi-person"></i> User</a>
 <a href="role.php"><i class="bi bi-person-badge"></i> Role</a>

@@ -89,7 +89,7 @@ include "nav.php";
 <h5 class="mb-0">User Management</h5>
 
 <div class="ms-auto">
-<span class="me-3"><i class="bi bi-person-circle"></i> Admin</span>
+<span class="me-3"><i class="bi bi-person-circle"></i> <?php echo htmlspecialchars($_SESSION['fullName'] ?? 'User'); ?></span>
 </div>
 
 </div>

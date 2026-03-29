@@ -12,6 +12,7 @@ if (isset($_POST['loginAuth'])) {
 
     if ($row && password_verify($password, $row['password'])) {
         $_SESSION['userID'] = $row['userID'];
+        $_SESSION['fullName'] = $row['fullName'];
         header("Location: ../frontend/dashboard.php");
         exit();
     } else {
