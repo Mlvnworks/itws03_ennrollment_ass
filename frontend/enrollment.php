@@ -43,7 +43,7 @@ body{background:#f5f6fa;}
 <div class="container mt-5">
 <div class="d-flex justify-content-between mb-3">
 <h3>Enrollment Table</h3>
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEnrollmentModal">+ Add Enrollment</button>
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEnrollmentModal"><i class="bi bi-plus-circle me-1"></i>Add Enrollment</button>
 </div>
 
 <div class="card shadow-sm">
@@ -70,9 +70,10 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "<td>" . $row['campusName'] . "</td>";
     echo "<td>" . $row['status'] . "</td>";
     echo '<td>
-        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editEnrollmentModal' . $row['enrollmentID'] . '">Edit</button>
-        <br>
-        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEnrollmentModal' . $row['enrollmentID'] . '">Delete</button>
+        <div class="d-inline-flex gap-1">
+            <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editEnrollmentModal' . $row['enrollmentID'] . '"><i class="bi bi-pencil-square me-1"></i>Edit</button>
+            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEnrollmentModal' . $row['enrollmentID'] . '"><i class="bi bi-trash me-1"></i>Delete</button>
+        </div>
     </td>';
 
     include "modal/enrollmentModalAuth.php";
@@ -97,23 +98,24 @@ while ($row = mysqli_fetch_assoc($result)) {
 <div class="modal-body">
 <div class="mb-3">
 <label class="form-label">Enrollment Number</label>
-<input type="text" name="enrollmentNo" class="form-control" required>
+<input type="text" name="enrollmentNo" class="form-control" placeholder="Enter enrollment number" required>
 </div>
 <div class="mb-3">
 <label class="form-label">Student Name</label>
-<input type="text" name="studentName" class="form-control" required>
+<input type="text" name="studentName" class="form-control" placeholder="Enter student name" required>
 </div>
 <div class="mb-3">
 <label class="form-label">Course Name</label>
-<input type="text" name="courseName" class="form-control" required>
+<input type="text" name="courseName" class="form-control" placeholder="Enter course name" required>
 </div>
 <div class="mb-3">
 <label class="form-label">Campus Name</label>
-<input type="text" name="campusName" class="form-control" required>
+<input type="text" name="campusName" class="form-control" placeholder="Enter campus name" required>
 </div>
 <div class="mb-3">
 <label class="form-label">Status</label>
 <select name="status" class="form-control" required>
+<option value="" disabled selected>Select enrollment status</option>
 <option value="Pending">Pending</option>
 <option value="Enrolled">Enrolled</option>
 <option value="Cancelled">Cancelled</option>
@@ -121,8 +123,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 </div>
 </div>
 <div class="modal-footer">
-<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-<button type="submit" name="enrollmentAuth" class="btn btn-primary">Save</button>
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Cancel</button>
+<button type="submit" name="enrollmentAuth" class="btn btn-primary"><i class="bi bi-check-circle me-1"></i>Save</button>
 </div>
 </form>
 </div>

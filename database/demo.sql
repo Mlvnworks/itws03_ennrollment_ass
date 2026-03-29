@@ -30,21 +30,18 @@ CREATE TABLE `role` (
 
 CREATE TABLE `course` (
   `courseID` int(11) NOT NULL AUTO_INCREMENT,
-  `courseCode` varchar(50) NOT NULL,
   `courseName` varchar(120) NOT NULL,
   `courseDesc` varchar(255) NOT NULL,
   `dateCreated` timestamp NOT NULL DEFAULT current_timestamp(),
   `dateDeleted` date DEFAULT NULL,
   PRIMARY KEY (`courseID`),
-  UNIQUE KEY `uq_course_courseCode` (`courseCode`),
   UNIQUE KEY `uq_course_courseName` (`courseName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `campus` (
   `campusID` int(11) NOT NULL AUTO_INCREMENT,
   `campusName` varchar(120) NOT NULL,
-  `campusAddress` varchar(200) NOT NULL,
-  `campusHead` varchar(120) NOT NULL,
+  `campusDesc` varchar(255) NOT NULL,
   `dateCreated` timestamp NOT NULL DEFAULT current_timestamp(),
   `dateDeleted` date DEFAULT NULL,
   PRIMARY KEY (`campusID`),
@@ -97,13 +94,13 @@ INSERT INTO `role` (`roleID`, `roleName`, `roleDesc`) VALUES
 (1, 'Administrator', 'Manages the entire system'),
 (2, 'Registrar', 'Handles student records and enrollment');
 
-INSERT INTO `course` (`courseID`, `courseCode`, `courseName`, `courseDesc`) VALUES
-(1, 'BSIT', 'Bachelor of Science in Information Technology', 'Four-year IT degree program'),
-(2, 'BSCS', 'Bachelor of Science in Computer Science', 'Four-year CS degree program');
+INSERT INTO `course` (`courseID`, `courseName`, `courseDesc`) VALUES
+(1, 'Bachelor of Science in Information Technology', 'Four-year IT degree program'),
+(2, 'Bachelor of Science in Computer Science', 'Four-year CS degree program');
 
-INSERT INTO `campus` (`campusID`, `campusName`, `campusAddress`, `campusHead`) VALUES
-(1, 'Main Campus', '123 Main St, Manila', 'Dr. Maria Santos'),
-(2, 'North Campus', '45 North Ave, Quezon City', 'Dr. Ramon Cruz');
+INSERT INTO `campus` (`campusID`, `campusName`, `campusDesc`) VALUES
+(1, 'Main Campus', 'Primary campus in Manila'),
+(2, 'North Campus', 'Extension campus in Quezon City');
 
 INSERT INTO `students` (`studentID`, `studentNo`, `fullName`, `email`, `yearLevel`) VALUES
 (1, '2026-0001', 'John Dela Cruz', 'john.delacruz@studentmail.com', '1st Year'),

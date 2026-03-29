@@ -3,17 +3,16 @@ require_once 'database.php';
 
 if (isset($_POST['campusAuth'])) {
     $campusName = mysqli_real_escape_string($conn, trim($_POST['campusName']));
-    $campusAddress = mysqli_real_escape_string($conn, trim($_POST['campusAddress']));
-    $campusHead = mysqli_real_escape_string($conn, trim($_POST['campusHead']));
+    $campusDesc = mysqli_real_escape_string($conn, trim($_POST['campusDesc']));
 
-    $checkDuplicate = mysqli_query($conn, "SELECT * FROM campus WHERE campusName = '$campusName' AND dateDeleted IS NULL");
+    $checkDuplicate = mysqli_query($conn, "SELECT * FROM campus WHERE campusName = '$campusName' AND campusDesc = '$campusDesc' AND dateDeleted IS NULL");
 
     if (mysqli_fetch_assoc($checkDuplicate)) {
         header("Location: ../frontend/campus.php?allready");
         exit();
     }
 
-    $insertData = "INSERT INTO campus SET campusName = '$campusName', campusAddress = '$campusAddress', campusHead = '$campusHead'";
+    $insertData = "INSERT INTO campus SET campusName = '$campusName', campusDesc = '$campusDesc'";
     mysqli_query($conn, $insertData);
 
     header("Location: ../frontend/campus.php?savedData");
@@ -23,8 +22,7 @@ if (isset($_POST['campusAuth'])) {
 if (isset($_POST['updateCampus'])) {
     $campusID = (int) $_POST['campusID'];
     $campusName = mysqli_real_escape_string($conn, trim($_POST['campusName']));
-    $campusAddress = mysqli_real_escape_string($conn, trim($_POST['campusAddress']));
-    $campusHead = mysqli_real_escape_string($conn, trim($_POST['campusHead']));
+    $campusDesc = mysqli_real_escape_string($conn, trim($_POST['campusDesc']));
 
     $getCurrent = mysqli_query($conn, "SELECT * FROM campus WHERE campusID = '$campusID'");
     $campus = mysqli_fetch_assoc($getCurrent);
@@ -36,8 +34,7 @@ if (isset($_POST['updateCampus'])) {
 
     if (
         $campus['campusName'] === $campusName &&
-        $campus['campusAddress'] === $campusAddress &&
-        $campus['campusHead'] === $campusHead
+        $campus['campusDesc'] === $campusDesc
     ) {
         header("Location: ../frontend/campus.php?nothingChanged");
         exit();
@@ -49,7 +46,7 @@ if (isset($_POST['updateCampus'])) {
         exit();
     }
 
-    $updateData = "UPDATE campus SET campusName = '$campusName', campusAddress = '$campusAddress', campusHead = '$campusHead' WHERE campusID = '$campusID'";
+    $updateData = "UPDATE campus SET campusName = '$campusName', campusDesc = '$campusDesc' WHERE campusID = '$campusID'";
     mysqli_query($conn, $updateData);
 
     header("Location: ../frontend/campus.php?updated");

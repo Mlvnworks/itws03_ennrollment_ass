@@ -43,7 +43,7 @@ body{background:#f5f6fa;}
 <div class="container mt-5">
 <div class="d-flex justify-content-between mb-3">
 <h3>Course Table</h3>
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCourseModal">+ Add Course</button>
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCourseModal"><i class="bi bi-plus-circle me-1"></i>Add Course</button>
 </div>
 
 <div class="card shadow-sm">
@@ -51,7 +51,6 @@ body{background:#f5f6fa;}
 <table class="table table-bordered table-striped text-center">
 <thead class="table-dark">
 <tr>
-<th>Course Code</th>
 <th>Course Name</th>
 <th>Description</th>
 <th width="150">Action</th>
@@ -62,13 +61,13 @@ body{background:#f5f6fa;}
 $result = mysqli_query($conn, "SELECT * FROM course WHERE dateDeleted IS NULL ORDER BY courseID DESC");
 while ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>";
-    echo "<td>" . $row['courseCode'] . "</td>";
     echo "<td>" . $row['courseName'] . "</td>";
     echo "<td>" . $row['courseDesc'] . "</td>";
     echo '<td>
-        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editCourseModal' . $row['courseID'] . '">Edit Course</button>
-        <br>
-        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCourseModal' . $row['courseID'] . '">Delete Course</button>
+        <div class="d-inline-flex gap-1">
+            <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editCourseModal' . $row['courseID'] . '"><i class="bi bi-pencil-square me-1"></i>Edit</button>
+            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCourseModal' . $row['courseID'] . '"><i class="bi bi-trash me-1"></i>Delete</button>
+        </div>
     </td>';
 
     include "modal/courseModalAuth.php";
@@ -92,21 +91,17 @@ while ($row = mysqli_fetch_assoc($result)) {
 </div>
 <div class="modal-body">
 <div class="mb-3">
-<label class="form-label">Course Code</label>
-<input type="text" name="courseCode" class="form-control" required>
-</div>
-<div class="mb-3">
 <label class="form-label">Course Name</label>
-<input type="text" name="courseName" class="form-control" required>
+<input type="text" name="courseName" class="form-control" placeholder="Enter course name" required>
 </div>
 <div class="mb-3">
 <label class="form-label">Course Description</label>
-<input type="text" name="courseDesc" class="form-control" required>
+<input type="text" name="courseDesc" class="form-control" placeholder="Enter course description" required>
 </div>
 </div>
 <div class="modal-footer">
-<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-<button type="submit" name="courseAuth" class="btn btn-primary">Save</button>
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Cancel</button>
+<button type="submit" name="courseAuth" class="btn btn-primary"><i class="bi bi-check-circle me-1"></i>Save</button>
 </div>
 </form>
 </div>

@@ -43,7 +43,7 @@ body{background:#f5f6fa;}
 <div class="container mt-5">
 <div class="d-flex justify-content-between mb-3">
 <h3>Role Table</h3>
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRoleModal">+ Add Role</button>
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRoleModal"><i class="bi bi-plus-circle me-1"></i>Add Role</button>
 </div>
 
 <div class="card shadow-sm">
@@ -64,9 +64,10 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "<td>" . $row['roleName'] . "</td>";
     echo "<td>" . $row['roleDesc'] . "</td>";
     echo '<td>
-        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editRoleModal' . $row['roleID'] . '">Edit Role</button>
-        <br>
-        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteRoleModal' . $row['roleID'] . '">Delete Role</button>
+        <div class="d-inline-flex gap-1">
+            <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editRoleModal' . $row['roleID'] . '"><i class="bi bi-pencil-square me-1"></i>Edit</button>
+            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteRoleModal' . $row['roleID'] . '"><i class="bi bi-trash me-1"></i>Delete</button>
+        </div>
     </td>';
 
     include "modal/roleModalAuth.php";
@@ -91,16 +92,16 @@ while ($row = mysqli_fetch_assoc($result)) {
 <div class="modal-body">
 <div class="mb-3">
 <label class="form-label">Role Name</label>
-<input type="text" name="roleName" class="form-control" required>
+<input type="text" name="roleName" class="form-control" placeholder="Enter role name" required>
 </div>
 <div class="mb-3">
 <label class="form-label">Role Description</label>
-<input type="text" name="roleDesc" class="form-control" required>
+<input type="text" name="roleDesc" class="form-control" placeholder="Enter role description" required>
 </div>
 </div>
 <div class="modal-footer">
-<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-<button type="submit" name="roleAuth" class="btn btn-primary">Save</button>
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Cancel</button>
+<button type="submit" name="roleAuth" class="btn btn-primary"><i class="bi bi-check-circle me-1"></i>Save</button>
 </div>
 </form>
 </div>

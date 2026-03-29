@@ -2,18 +2,17 @@
 require_once 'database.php';
 
 if (isset($_POST['courseAuth'])) {
-    $courseCode = mysqli_real_escape_string($conn, trim($_POST['courseCode']));
     $courseName = mysqli_real_escape_string($conn, trim($_POST['courseName']));
     $courseDesc = mysqli_real_escape_string($conn, trim($_POST['courseDesc']));
 
-    $checkDuplicate = mysqli_query($conn, "SELECT * FROM course WHERE (courseCode = '$courseCode' OR courseName = '$courseName') AND dateDeleted IS NULL");
+    $checkDuplicate = mysqli_query($conn, "SELECT * FROM course WHERE courseName = '$courseName' AND courseDesc = '$courseDesc' AND dateDeleted IS NULL");
 
     if (mysqli_fetch_assoc($checkDuplicate)) {
         header("Location: ../frontend/course.php?allready");
         exit();
     }
 
-    $insertData = "INSERT INTO course SET courseCode = '$courseCode', courseName = '$courseName', courseDesc = '$courseDesc'";
+    $insertData = "INSERT INTO course SET courseName = '$courseName', courseDesc = '$courseDesc'";
     mysqli_query($conn, $insertData);
 
     header("Location: ../frontend/course.php?savedData");
@@ -22,7 +21,6 @@ if (isset($_POST['courseAuth'])) {
 
 if (isset($_POST['updateCourse'])) {
     $courseID = (int) $_POST['courseID'];
-    $courseCode = mysqli_real_escape_string($conn, trim($_POST['courseCode']));
     $courseName = mysqli_real_escape_string($conn, trim($_POST['courseName']));
     $courseDesc = mysqli_real_escape_string($conn, trim($_POST['courseDesc']));
 
@@ -35,7 +33,6 @@ if (isset($_POST['updateCourse'])) {
     }
 
     if (
-        $course['courseCode'] === $courseCode &&
         $course['courseName'] === $courseName &&
         $course['courseDesc'] === $courseDesc
     ) {
@@ -43,13 +40,13 @@ if (isset($_POST['updateCourse'])) {
         exit();
     }
 
-    $checkDuplicate = mysqli_query($conn, "SELECT * FROM course WHERE (courseCode = '$courseCode' OR courseName = '$courseName') AND courseID != '$courseID' AND dateDeleted IS NULL");
+    $checkDuplicate = mysqli_query($conn, "SELECT * FROM course WHERE courseName = '$courseName' AND courseID != '$courseID' AND dateDeleted IS NULL");
     if (mysqli_fetch_assoc($checkDuplicate)) {
         header("Location: ../frontend/course.php?duplicate");
         exit();
     }
 
-    $updateData = "UPDATE course SET courseCode = '$courseCode', courseName = '$courseName', courseDesc = '$courseDesc' WHERE courseID = '$courseID'";
+    $updateData = "UPDATE course SET courseName = '$courseName', courseDesc = '$courseDesc' WHERE courseID = '$courseID'";
     mysqli_query($conn, $updateData);
 
     header("Location: ../frontend/course.php?updated");

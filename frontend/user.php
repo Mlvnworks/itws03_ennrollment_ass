@@ -107,7 +107,7 @@ include "nav.php";
         <h3>User Entity Table</h3>
         <!-- Add Button -->
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">
-            + Add User
+            <i class="bi bi-plus-circle me-1"></i>Add User
         </button>
     </div>
 
@@ -132,14 +132,14 @@ include "nav.php";
                     echo "<td>" . $row['username']. "</td>";
                     echo "<td>" . $row['email']. "</td>";
                     echo '<td>
-                            <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editUserModal' . $row['userID'] . '">
-                                Edit User
-                            </button>
-                            <br>
-                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUserModal' . $row['userID'] . '">
-                                Delete User
-                            </button>
-
+                            <div class="d-inline-flex gap-1">
+                                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editUserModal' . $row['userID'] . '">
+                                    <i class="bi bi-pencil-square me-1"></i>Edit
+                                </button>
+                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUserModal' . $row['userID'] . '">
+                                    <i class="bi bi-trash me-1"></i>Delete
+                                </button>
+                            </div>
                     </td>';
 
         
@@ -169,26 +169,26 @@ include "nav.php";
 
         <div class="modal-body">
 
-            <div class="mb-3">
+                <div class="mb-3">
                 <label class="form-label">Full Name</label>
-                <input type="text" name="fullName" class="form-control" required>
+                <input type="text" name="fullName" class="form-control" placeholder="Enter full name" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Username</label>
-                <input type="text" name="username" class="form-control" required>
+                <input type="text" name="username" class="form-control" placeholder="Enter username" required>
             </div>
 
                 <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="text" name="email" class="form-control" required>
+                <input type="email" name="email" class="form-control" placeholder="Enter email address" required>
             </div>
 
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" name="userAuth" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Cancel</button>
+          <button type="submit" name="userAuth" class="btn btn-primary"><i class="bi bi-check-circle me-1"></i>Save</button>
         </div>
       </form>
 

@@ -43,7 +43,7 @@ body{background:#f5f6fa;}
 <div class="container mt-5">
 <div class="d-flex justify-content-between mb-3">
 <h3>Student Table</h3>
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudentModal">+ Add Student</button>
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudentModal"><i class="bi bi-plus-circle me-1"></i>Add Student</button>
 </div>
 
 <div class="card shadow-sm">
@@ -68,9 +68,10 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "<td>" . $row['email'] . "</td>";
     echo "<td>" . $row['yearLevel'] . "</td>";
     echo '<td>
-        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editStudentModal' . $row['studentID'] . '">Edit Student</button>
-        <br>
-        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteStudentModal' . $row['studentID'] . '">Delete Student</button>
+        <div class="d-inline-flex gap-1">
+            <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editStudentModal' . $row['studentID'] . '"><i class="bi bi-pencil-square me-1"></i>Edit</button>
+            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteStudentModal' . $row['studentID'] . '"><i class="bi bi-trash me-1"></i>Delete</button>
+        </div>
     </td>';
 
     include "modal/studentModalAuth.php";
@@ -95,24 +96,24 @@ while ($row = mysqli_fetch_assoc($result)) {
 <div class="modal-body">
 <div class="mb-3">
 <label class="form-label">Student Number</label>
-<input type="text" name="studentNo" class="form-control" required>
+<input type="text" name="studentNo" class="form-control" placeholder="Enter student number" required>
 </div>
 <div class="mb-3">
 <label class="form-label">Full Name</label>
-<input type="text" name="fullName" class="form-control" required>
+<input type="text" name="fullName" class="form-control" placeholder="Enter full name" required>
 </div>
 <div class="mb-3">
 <label class="form-label">Email</label>
-<input type="email" name="email" class="form-control" required>
+<input type="email" name="email" class="form-control" placeholder="Enter email address" required>
 </div>
 <div class="mb-3">
 <label class="form-label">Year Level</label>
-<input type="text" name="yearLevel" class="form-control" required>
+<input type="text" name="yearLevel" class="form-control" placeholder="Enter year level (e.g., 1st Year)" required>
 </div>
 </div>
 <div class="modal-footer">
-<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-<button type="submit" name="studentAuth" class="btn btn-primary">Save</button>
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Cancel</button>
+<button type="submit" name="studentAuth" class="btn btn-primary"><i class="bi bi-check-circle me-1"></i>Save</button>
 </div>
 </form>
 </div>

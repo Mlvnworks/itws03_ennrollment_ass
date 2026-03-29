@@ -11,28 +11,28 @@
 
           <div class="mb-3">
             <label class="form-label">Student Number</label>
-            <input type="text" name="studentNo" class="form-control" value="<?php echo $row['studentNo']; ?>" required>
+            <input type="text" name="studentNo" class="form-control" value="<?php echo $row['studentNo']; ?>" placeholder="Enter student number" required>
           </div>
 
           <div class="mb-3">
             <label class="form-label">Full Name</label>
-            <input type="text" name="fullName" class="form-control" value="<?php echo $row['fullName']; ?>" required>
+            <input type="text" name="fullName" class="form-control" value="<?php echo $row['fullName']; ?>" placeholder="Enter full name" required>
           </div>
 
           <div class="mb-3">
             <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" value="<?php echo $row['email']; ?>" required>
+            <input type="email" name="email" class="form-control" value="<?php echo $row['email']; ?>" placeholder="Enter email address" required>
           </div>
 
           <div class="mb-3">
             <label class="form-label">Year Level</label>
-            <input type="text" name="yearLevel" class="form-control" value="<?php echo $row['yearLevel']; ?>" required>
+            <input type="text" name="yearLevel" class="form-control" value="<?php echo $row['yearLevel']; ?>" placeholder="Enter year level" required>
           </div>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" name="updateStudent" class="btn btn-primary">Update</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Cancel</button>
+          <button type="submit" name="updateStudent" class="btn btn-primary"><i class="bi bi-save me-1"></i>Update</button>
         </div>
       </form>
     </div>
@@ -54,8 +54,8 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" name="deleteStudent" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Cancel</button>
+          <button type="submit" name="deleteStudent" class="btn btn-danger"><i class="bi bi-trash me-1"></i>Delete</button>
         </div>
       </form>
     </div>

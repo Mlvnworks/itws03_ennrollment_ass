@@ -43,7 +43,7 @@ body{background:#f5f6fa;}
 <div class="container mt-5">
 <div class="d-flex justify-content-between mb-3">
 <h3>Campus Table</h3>
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCampusModal">+ Add Campus</button>
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCampusModal"><i class="bi bi-plus-circle me-1"></i>Add Campus</button>
 </div>
 
 <div class="card shadow-sm">
@@ -52,8 +52,7 @@ body{background:#f5f6fa;}
 <thead class="table-dark">
 <tr>
 <th>Campus Name</th>
-<th>Address</th>
-<th>Campus Head</th>
+<th>Description</th>
 <th width="150">Action</th>
 </tr>
 </thead>
@@ -63,12 +62,12 @@ $result = mysqli_query($conn, "SELECT * FROM campus WHERE dateDeleted IS NULL OR
 while ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>";
     echo "<td>" . $row['campusName'] . "</td>";
-    echo "<td>" . $row['campusAddress'] . "</td>";
-    echo "<td>" . $row['campusHead'] . "</td>";
+    echo "<td>" . $row['campusDesc'] . "</td>";
     echo '<td>
-        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editCampusModal' . $row['campusID'] . '">Edit Campus</button>
-        <br>
-        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCampusModal' . $row['campusID'] . '">Delete Campus</button>
+        <div class="d-inline-flex gap-1">
+            <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editCampusModal' . $row['campusID'] . '"><i class="bi bi-pencil-square me-1"></i>Edit</button>
+            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCampusModal' . $row['campusID'] . '"><i class="bi bi-trash me-1"></i>Delete</button>
+        </div>
     </td>';
 
     include "modal/campusModalAuth.php";
@@ -93,20 +92,16 @@ while ($row = mysqli_fetch_assoc($result)) {
 <div class="modal-body">
 <div class="mb-3">
 <label class="form-label">Campus Name</label>
-<input type="text" name="campusName" class="form-control" required>
+<input type="text" name="campusName" class="form-control" placeholder="Enter campus name" required>
 </div>
 <div class="mb-3">
-<label class="form-label">Address</label>
-<input type="text" name="campusAddress" class="form-control" required>
-</div>
-<div class="mb-3">
-<label class="form-label">Campus Head</label>
-<input type="text" name="campusHead" class="form-control" required>
+<label class="form-label">Campus Description</label>
+<input type="text" name="campusDesc" class="form-control" placeholder="Enter campus description" required>
 </div>
 </div>
 <div class="modal-footer">
-<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-<button type="submit" name="campusAuth" class="btn btn-primary">Save</button>
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Cancel</button>
+<button type="submit" name="campusAuth" class="btn btn-primary"><i class="bi bi-check-circle me-1"></i>Save</button>
 </div>
 </form>
 </div>

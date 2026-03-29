@@ -11,23 +11,18 @@
 
           <div class="mb-3">
             <label class="form-label">Campus Name</label>
-            <input type="text" name="campusName" class="form-control" value="<?php echo $row['campusName']; ?>" required>
+            <input type="text" name="campusName" class="form-control" value="<?php echo $row['campusName']; ?>" placeholder="Enter campus name" required>
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Address</label>
-            <input type="text" name="campusAddress" class="form-control" value="<?php echo $row['campusAddress']; ?>" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Campus Head</label>
-            <input type="text" name="campusHead" class="form-control" value="<?php echo $row['campusHead']; ?>" required>
+            <label class="form-label">Campus Description</label>
+            <input type="text" name="campusDesc" class="form-control" value="<?php echo $row['campusDesc']; ?>" placeholder="Enter campus description" required>
           </div>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" name="updateCampus" class="btn btn-primary">Update</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Cancel</button>
+          <button type="submit" name="updateCampus" class="btn btn-primary"><i class="bi bi-save me-1"></i>Update</button>
         </div>
       </form>
     </div>
@@ -49,8 +44,8 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" name="deleteCampus" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Cancel</button>
+          <button type="submit" name="deleteCampus" class="btn btn-danger"><i class="bi bi-trash me-1"></i>Delete</button>
         </div>
       </form>
     </div>

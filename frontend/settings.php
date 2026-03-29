@@ -50,25 +50,25 @@ body{background:#f5f6fa;}
 <form method="POST" action="../backend/settingsAuth.php">
 <div class="mb-3">
 <label class="form-label">School Name</label>
-<input type="text" name="schoolName" class="form-control" value="<?php echo isset($row['schoolName']) ? $row['schoolName'] : ''; ?>" required>
+<input type="text" name="schoolName" class="form-control" value="<?php echo isset($row['schoolName']) ? $row['schoolName'] : ''; ?>" placeholder="Enter school name" required>
 </div>
 
 <div class="mb-3">
 <label class="form-label">School Email</label>
-<input type="email" name="schoolEmail" class="form-control" value="<?php echo isset($row['schoolEmail']) ? $row['schoolEmail'] : ''; ?>" required>
+<input type="email" name="schoolEmail" class="form-control" value="<?php echo isset($row['schoolEmail']) ? $row['schoolEmail'] : ''; ?>" placeholder="Enter school email" required>
 </div>
 
 <div class="mb-3">
 <label class="form-label">School Phone</label>
-<input type="text" name="schoolPhone" class="form-control" value="<?php echo isset($row['schoolPhone']) ? $row['schoolPhone'] : ''; ?>" required>
+<input type="text" name="schoolPhone" class="form-control" value="<?php echo isset($row['schoolPhone']) ? $row['schoolPhone'] : ''; ?>" placeholder="Enter school phone number" required>
 </div>
 
 <div class="mb-3">
 <label class="form-label">School Address</label>
-<textarea name="schoolAddress" class="form-control" rows="3" required><?php echo isset($row['schoolAddress']) ? $row['schoolAddress'] : ''; ?></textarea>
+<textarea name="schoolAddress" class="form-control" rows="3" placeholder="Enter school address" required><?php echo isset($row['schoolAddress']) ? $row['schoolAddress'] : ''; ?></textarea>
 </div>
 
-<button type="submit" name="saveSettings" class="btn btn-primary">Save Settings</button>
+<button type="submit" name="saveSettings" class="btn btn-primary"><i class="bi bi-check-circle me-1"></i>Save Settings</button>
 </form>
 </div>
 </div>
